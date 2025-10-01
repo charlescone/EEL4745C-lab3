@@ -34,15 +34,15 @@ uint32_t task2Count = 0;
 
 // Complete the functions below as test threads.
 void task0(void) {
-
+    UARTprintf("Task 0 counter is at: %d\n", task0Count++);
 }
 
 void task1(void) {
-
+    UARTprintf("Task 1 counter is at: %d\n", task1Count++);
 }
 
 void task2(void) {
-
+    UARTprintf("Task 2 counter is at: %d\n", task2Count++);
 }
 
 /********************************Public Functions***********************************/
@@ -61,10 +61,12 @@ int main(void) {
     Multimod_Init();
 
     // Add threads, initialize semaphores here!
-        // your code here
+    G8RTOS_AddThread(task0);
+    G8RTOS_AddThread(task1);
+    G8RTOS_AddThread(task2);
 
     // launch your RTOS!
-        // your code here
+    G8RTOS_Launch();
 
     // spin - the RTOS will take over now
     while (1);

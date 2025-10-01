@@ -163,6 +163,7 @@ uint8_t G8RTOS_AddThread(void (*threadToAdd)(void)) {
 // Increments system time, sets PendSV flag to start scheduler.
 // Return: void
 void SysTick_Handler() {
-// stuff goes here
+    SystemTime++;
+    HWREG(NVIC_INT_CTRL) |= NVIC_INT_CTRL_PEND_SV;
 }
 
