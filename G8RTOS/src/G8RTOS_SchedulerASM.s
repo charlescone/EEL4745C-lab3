@@ -28,6 +28,18 @@ G8RTOS_Start:
 	CPSID I
 
 	// your stuff goes here
+	LDR R0, RunningPtr
+	LDR R1, [R0]
+	LDR SP, [R1]
+
+	POP {R4 - R11}
+	POP {R0 - R3}
+	POP {R12}
+
+	ADD SP, SP, #4
+	POP {LR}
+
+	ADD SP, SP, #4
 
 	; Enables Interrupts
 	CPSIE I
@@ -51,7 +63,24 @@ PendSV_Handler:
 	; Disable Interrupts
 	CPSID I
 
-	// your stuff goes here
+	PUSH {R4 - R11}
+
+	LDR R0, RunningPtr
+	LDR R1, [R0]
+
+	STR SP, [R1]
+
+	PUSH {R0, LR}
+
+	BL G8RTOS_Scheduler
+
+	POP {R0, LR}
+
+	LDR R0, RunningPtr
+	LDR R1, [R0]
+	LDR SP, [R1]
+
+	POP {R4 - R11}
 
 	;enable interrupts
 	CPSIE I

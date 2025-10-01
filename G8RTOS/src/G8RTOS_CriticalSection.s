@@ -17,9 +17,9 @@
 StartCriticalSection:
 	.asmfunc
 
-					; Save PRIMASK to R0 (Return Register)
-					; Disable Interrupts
-					; Return
+	MRS R0, PRIMASK	; Save PRIMASK to R0 (Return Register)
+	CPSID I			; Disable Interrupts
+	BX LR			; Return
 
 	.endasmfunc
 
@@ -29,8 +29,8 @@ StartCriticalSection:
 EndCriticalSection:
 	.asmfunc
 
-					; Save R0 (Param) to PRIMASK
-					; Return
+	MRS PRIMASK, R0	; Save R0 (Param) to PRIMASK
+	BX LR			; Return
 
 	.endasmfunc
 
