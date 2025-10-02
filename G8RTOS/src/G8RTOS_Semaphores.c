@@ -34,7 +34,9 @@ int32_t IBit_State;
 // Param "value": Value to initialize semaphore to
 // Return: void
 void G8RTOS_InitSemaphore(semaphore_t* s, int32_t value) {
-   // your stuff goes here
+    IBit_State = StartCriticalSection();
+    *s = value;
+    EndCriticalSection(IBit_State);
 }
 
 // G8RTOS_WaitSemaphore
@@ -44,7 +46,15 @@ void G8RTOS_InitSemaphore(semaphore_t* s, int32_t value) {
 // Param "s": Pointer to semaphore
 // Return: void
 void G8RTOS_WaitSemaphore(semaphore_t* s) {
-    // your stuff goes here
+    for (;;) {
+        IBit_State = StartCriticalSection();
+        if (*s > 0) {
+            (*s)--;
+            EndCriticalSection(IBit_State);
+            break;
+        }
+        EndCriticalSection(IBit_State);
+    }
 }
 
 // G8RTOS_SignalSemaphore
@@ -53,7 +63,9 @@ void G8RTOS_WaitSemaphore(semaphore_t* s) {
 // Param "s": Pointer to semaphore
 // Return: void
 void G8RTOS_SignalSemaphore(semaphore_t* s) {
-    // your stuff goes here
+    IBit_State = StartCriticalSection();
+    (*s)++;
+    EndCriticalSection(IBit_State);
 }
 
 /********************************Public Functions***********************************/

@@ -35,22 +35,28 @@ uint32_t task2Count = 0;
 // Complete the functions below as test threads.
 void task0(void) {
     while (1) {
+        G8RTOS_WaitSemaphore(sem_UART);
         UARTprintf("Task 0 counter is at: %d\n", task0Count++);
+        G8RTOS_SignalSemaphore(sem_UART);
         SysCtlDelay(2000);
     }
 }
 
 void task1(void) {
     while (1) {
+        G8RTOS_WaitSemaphore(sem_UART);
         UARTprintf("Task 1 counter is at: %d\n", task1Count++);
         SysCtlDelay(2000);
+        G8RTOS_SignalSemaphore(sem_UART);
     }
 }
 
 void task2(void) {
     while (1) {
+        G8RTOS_WaitSemaphore(sem_UART);
         UARTprintf("Task 2 counter is at: %d\n", task2Count++);
         SysCtlDelay(2000);
+        G8RTOS_SignalSemaphore(sem_UART);
     }
 }
 
@@ -71,6 +77,7 @@ int main(void) {
 
     // Add threads, initialize semaphores here!
     G8RTOS_Init();
+    G8RTOS_InitSemaphore(sem_UART, 1);
 
     G8RTOS_AddThread(task0);
     G8RTOS_AddThread(task1);

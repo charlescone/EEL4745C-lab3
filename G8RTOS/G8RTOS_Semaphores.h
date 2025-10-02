@@ -18,7 +18,7 @@
 /******************************Data Type Definitions********************************/
 
 // Semaphore typedef
-typedef uint32_t semaphore_t;
+typedef int32_t semaphore_t;
 // Semaphore instantiation
 // your stuff goes here
 
