@@ -30,6 +30,7 @@
 
 // Scheduler error typedef
 // stuff goes here (if you want)
+typedef uint8_t sched_ErrCode_t;
 
 
 

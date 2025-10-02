@@ -29,7 +29,7 @@ StartCriticalSection:
 EndCriticalSection:
 	.asmfunc
 
-	MRS PRIMASK, R0	; Save R0 (Param) to PRIMASK
+	MSR PRIMASK, R0	; Save R0 (Param) to PRIMASK
 	BX LR			; Return
 
 	.endasmfunc

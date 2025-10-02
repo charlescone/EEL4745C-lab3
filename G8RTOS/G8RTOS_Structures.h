@@ -42,7 +42,7 @@
  *      - pay close attention to the order of variables!
  * */
 typedef struct tcb_t {
-    int32_t *sp;            // Thread Stack Pointer
+    uint32_t *sp;            // Thread Stack Pointer
     struct tcb_t *next;     // Next TCB
     struct tcb_t *prev;     // Previous TCB
 } tcb_t;

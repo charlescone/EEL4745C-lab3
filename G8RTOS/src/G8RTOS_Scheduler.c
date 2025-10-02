@@ -80,7 +80,7 @@ void G8RTOS_Init() {
 // G8RTOS_Launch
 // Launches the RTOS.
 // Return: error codes, 0 if none
-uint8_t G8RTOS_Launch() {
+int32_t G8RTOS_Launch() {
     // stuff goes here
     InitSysTick();
 
@@ -110,7 +110,7 @@ void G8RTOS_Scheduler() {
 // - Sets up the next and previous thread control block pointers in a round robin fashion
 // Param void* "threadToAdd": pointer to thread function address
 // Return: scheduler error code
-uint8_t G8RTOS_AddThread(void (*threadToAdd)(void)) {
+sched_ErrCode_t G8RTOS_AddThread(void (*threadToAdd)(void)) {
 
     uint32_t status = StartCriticalSection();
 

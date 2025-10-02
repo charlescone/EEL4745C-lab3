@@ -34,15 +34,24 @@ uint32_t task2Count = 0;
 
 // Complete the functions below as test threads.
 void task0(void) {
-    UARTprintf("Task 0 counter is at: %d\n", task0Count++);
+    while (1) {
+        UARTprintf("Task 0 counter is at: %d\n", task0Count++);
+        SysCtlDelay(2000);
+    }
 }
 
 void task1(void) {
-    UARTprintf("Task 1 counter is at: %d\n", task1Count++);
+    while (1) {
+        UARTprintf("Task 1 counter is at: %d\n", task1Count++);
+        SysCtlDelay(2000);
+    }
 }
 
 void task2(void) {
-    UARTprintf("Task 2 counter is at: %d\n", task2Count++);
+    while (1) {
+        UARTprintf("Task 2 counter is at: %d\n", task2Count++);
+        SysCtlDelay(2000);
+    }
 }
 
 /********************************Public Functions***********************************/
@@ -61,6 +70,8 @@ int main(void) {
     Multimod_Init();
 
     // Add threads, initialize semaphores here!
+    G8RTOS_Init();
+
     G8RTOS_AddThread(task0);
     G8RTOS_AddThread(task1);
     G8RTOS_AddThread(task2);

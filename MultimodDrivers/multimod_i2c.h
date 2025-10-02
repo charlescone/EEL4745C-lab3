@@ -53,8 +53,8 @@
 
 void I2C_Init(uint32_t mod);
 
-void I2C_WriteSingle(uint32_t mod, uint8_t addr, uint8_t byte, uint8_t stop);
-uint8_t I2C_ReadSingle(uint32_t mod, uint8_t addr, uint8_t stop);
+void I2C_WriteSingle(uint32_t mod, uint8_t addr, uint8_t byte);
+uint8_t I2C_ReadSingle(uint32_t mod, uint8_t addr);
 void I2C_WriteMultiple(uint32_t mod, uint8_t addr, uint8_t* data, uint8_t num_bytes);
 void I2C_ReadMultiple(uint32_t mod, uint8_t addr, uint8_t* data, uint8_t num_bytes);
 

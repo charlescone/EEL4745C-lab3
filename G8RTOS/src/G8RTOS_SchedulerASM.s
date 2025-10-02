@@ -27,7 +27,7 @@ G8RTOS_Start:
 	; Disable interrupts
 	CPSID I
 
-	// your stuff goes here
+	; your stuff goes here
 	LDR R0, RunningPtr
 	LDR R1, [R0]
 	LDR SP, [R1]
